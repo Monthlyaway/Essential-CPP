@@ -75,19 +75,59 @@ inline bool LessThan::operator() (int value) const
 	return value < _val;
 }
 
+int count_less_than(vector<int> ivec, int comp)
+{
+	LessThan lt(comp);
+
+	int count = 0;
+	for (auto u : ivec)
+	{
+		if (lt(u))
+			count++;
+	}
+	return count;
+}
+
+void print_less_than(const vector<int>& vec,
+	int comp, ostream& os = cout)
+{
+	LessThan lt(comp);
+	vector<int>::const_iterator iter = vec.begin();
+	vector<int>::const_iterator it_end = vec.end();
+	os << "elements less than " << lt.comp_val() << endl;
+	while ((iter = find_if(iter, it_end, lt)) != it_end)
+	{
+		os << *iter << ' ';
+		++iter;
+	}
+}
+
 void prog1(void)
 {
 	cout << "Program 1\nPracticing the LessThan function object" << endl;
 	LessThan lt10(10);
 
 	bool less_than_10 = lt10(12);
-	cout << 12  << (less_than_10 ? " is " : " is not ") << "than 10" << endl;
+	cout << 12 << (less_than_10 ? " is " : " is not ") << "than 10" << endl;
+	cout << "\nFunction call: int count_less_than({ 1,2,3,4,5,6,7,8,9,10 }, 3)"
+		<< endl;
+	cout << count_less_than({ 1,2,3,4,5,6,7,8,9,10 }, 3) << endl;
+	cout << "Function call: print_less_than" << endl;
+	int ia[16] = { 17, 12, 44, 9, 18, 45, 6, 14,
+ 23, 67, 9, 0, 27, 55, 8, 16 };
+	vector<int> vec(ia, ia + 16);
+	int comp_val = 20;
+	cout << "Number of elements less than "
+		<< comp_val << " are "
+		<< count_less_than(vec, comp_val) << endl;
+	print_less_than(vec, comp_val);
+
 	cout << "Bye!" << endl;
 }
 
 int main(void)
 {
-	//prog1();
+	prog1();
 
 	return 0;
 }

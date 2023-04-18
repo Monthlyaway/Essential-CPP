@@ -31,15 +31,6 @@ public:
 // member functions of Triangular_iterator
 	friend class Triangular_iterator;
 
-	typedef Triangular_iterator iterator;
-
-	Triangular_iterator begin(void) const {
-		return Triangular_iterator(_beg_pos);
-	}
-	Triangular_iterator end(void) const {
-		return Triangular_iterator(_beg_pos + _length);
-	}
-
 	// overloaded sets of constructors
 	Triangular() : _name("Triangular"), _length(_initial_length), _beg_pos(1), _next(0) {}  // default constructor
 
@@ -71,6 +62,27 @@ public:
 			os << elem << ' ';
 		return os;
 	}
+	friend istream& operator>>(istream& is, Triangular& rhs)
+	{
+		int len, beg_pos;
+		char ch1, ch2;
+		// given the input: (3 , 6) 6 10 15 21 28 36 
+        // ch1 == '(', bp == 3, ch2 == ',', len == 6 
+
+		is >> ch1 >> beg_pos >> ch2 >> len;
+		// set the member data of rhs, call this operator like this
+		// is >> rhs
+		rhs._length = len;
+		rhs._beg_pos = beg_pos;
+		rhs._next = beg_pos - 1;
+		/*
+		* rhs.beg_pos(bp); 
+		* rhs.length(len); 
+		* rhs.next_reset();
+		*/
+
+		return is;
+	}
 
 	// const member functions
 	int length() const { return _length; }
@@ -85,6 +97,8 @@ public:
 			_next = _beg_pos - 1;
 			return false;
 		}
+		if (_next == _elems.size())
+			gen_elems_to_len(_next + 10);
 		val = _elems[_next++];
 		return true;
 	}
@@ -107,6 +121,15 @@ public:
 		_next = rhs._beg_pos - 1;
 
 		return *this;
+	}
+
+	typedef Triangular_iterator iterator;
+
+	Triangular_iterator begin(void) const {
+		return Triangular_iterator(_beg_pos);
+	}
+	Triangular_iterator end(void) const {
+		return Triangular_iterator(_beg_pos + _length);
 	}
 
 private:
@@ -209,7 +232,19 @@ int sum(const Triangular& tri)
 	return sum;
 }
 
-int main(void)
+void test_cin_cout_tri(void)
+{
+	// input (4 , 10)
+	// output (4 , 10) 10 15 21 28 36 45 55 66 78 91 
+	Triangular tri1(6, 3);
+	cout << tri1 << endl;
+
+	Triangular tri2;
+	cin >> tri2;
+	cout << tri2 << endl;
+}
+
+void general_test(void)
 {
 	char ch;
 	bool more = true;
@@ -228,6 +263,12 @@ int main(void)
 		if (ch == 'n' || ch == 'N')
 			more = false;
 	}
+}
+
+int main(void)
+{
+	test_cin_cout_tri();
+
 
 	return 0;
 }
