@@ -13,12 +13,12 @@ class num_sequence
 public:
 	typedef void (num_sequence::* PtrType)(int);
 	// _pmf addresses one of these
-	void fibonacci(int);
-	void pell(int);
-	void lucas(int);
-	void triangular(int);
-	void square(int);
-	void pentagonal(int);
+	void fibonacci(int) {}
+	void pell(int) {}
+	void lucas(int) {}
+	void triangular(int) {}
+	void square(int) {}
+	void pentagonal(int) {}
 	/*
 	* If the position requested by the user is valid and if
 	* the number of elements currently stored does not include that position, the
@@ -58,7 +58,7 @@ private:
 	static vector<vector<int> > _seq;
 
 	// private functions
-	bool check_integrity(int pos);
+	bool check_integrity(int pos) const {}
 };
 
 const int num_sequence::_num_seq;
@@ -73,6 +73,7 @@ PtrType num_sequence::func_tbl[_num_seq] = {
 	&num_sequence::triangular,
 	&num_sequence::square,
 	&num_sequence::pentagonal };
+
 
 
 inline int num_sequence::elem(int pos)
