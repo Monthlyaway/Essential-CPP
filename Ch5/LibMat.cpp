@@ -71,6 +71,30 @@ protected:
 	string _anchor;
 };
 
+class Magazine : public LibMat {
+public:
+	Magazine(const string& title, const string& publisher)
+		: _title(title), _publisher(publisher) {
+		cout << "Magazine::Magazine(" << _title
+			<< ", " << _publisher << ") constructor\n";
+	}
+	virtual ~Magazine() {
+		cout << "Magazine::~Magazine() destructor!\n";
+	}
+	// override the Libmat version of print
+	virtual void print() const {
+		cout << "Magazine::print() -- I am a Magazine object!\n"
+			<< "My title is: " << _title << '\n'
+			<< "My publisher is: " << _publisher << endl;
+	}
+	const string& title() const { return _title; }
+	const string& publisher() const { return _publisher; }
+protected:
+	string _title;
+	string _publisher;
+};
+
+
 void print(LibMat& mat) {
 	cout << "in global print(): about to print mat.print()\n";
 	// this resolves to a print() member function 
@@ -88,10 +112,14 @@ int main(void)
 	//Book b("The Castle", "Franz Kafka");
 	//print(b);
 
-	cout << "\n" << "Creating an AudioBook object to print()\n";
+	/*cout << "\n" << "Creating an AudioBook object to print()\n";
 	AudioBook ab("Man Without Qualities",
 		"Robert Musil", "Kenneth Meyer");
-	print(ab);
+	print(ab);*/
+
+	cout << "\n" << "Creating a Magazine object to print()\n";
+	Magazine mag("National Geographic", "John Doe");
+	print(mag);
 
 	return 0;
 }
