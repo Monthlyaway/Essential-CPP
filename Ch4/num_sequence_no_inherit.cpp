@@ -13,12 +13,12 @@ class num_sequence
 public:
 	typedef void (num_sequence::* PtrType)(int);
 	// _pmf addresses one of these
-	void fibonacci(int) {}
-	void pell(int) {}
-	void lucas(int) {}
-	void triangular(int) {}
-	void square(int) {}
-	void pentagonal(int) {}
+	void fibonacci(int);
+	void pell(int);
+	void lucas(int);
+	void triangular(int);
+	void square(int);
+	void pentagonal(int);
 	/*
 	* If the position requested by the user is valid and if
 	* the number of elements currently stored does not include that position, the
@@ -37,7 +37,7 @@ public:
 	string what_am_i(void) const;
 
 private:
-	// points to the current vector
+	// points to the current function
 	PtrType _pmf;
 	// points to the current vector sequence
 	vector<int>* _elem;
@@ -47,7 +47,6 @@ private:
 	static const int _num_seq = 7;
 	// function table, consists of pointer to member functions above
 	static PtrType func_tbl[_num_seq];
-
 	/*
 	 * vector 1: fibonacci
 	 * vector 2: pell
@@ -56,7 +55,6 @@ private:
 	 * can not ommit space between the two >, because of maximal munch complilation rule
 	 */
 	static vector<vector<int> > _seq;
-
 	// private functions
 	bool check_integrity(int pos) const {}
 };
@@ -73,8 +71,6 @@ PtrType num_sequence::func_tbl[_num_seq] = {
 	&num_sequence::triangular,
 	&num_sequence::square,
 	&num_sequence::pentagonal };
-
-
 
 inline int num_sequence::elem(int pos)
 {
@@ -94,9 +90,9 @@ inline void num_sequence::set_sequence(num_sequence::ns_type nst) {
 	switch (nst)
 	{
 	default: cerr << "invalid type: setting to 0" << endl;
+		nst = ns_unset; break;
 		// deliberate fall-through
 	case ns_unset: _pmf = 0; _elem = 0; _isa = ns_unset; break;
-
 	case ns_fibonacci: case ns_lucas: case ns_pell: case ns_pentagonal:
 	case ns_square: case ns_triangular:
 		_pmf = func_tbl[nst];
@@ -112,7 +108,6 @@ inline void num_sequence::display(ostream& os, num_sequence& ns, int pos) {
 		<< ns.what_am_i() << " sequence is "
 		<< ns.elem(pos) << endl;
 }
-
 inline string num_sequence::what_am_i(void) const {
 	vector<string> seq_name{
 		"notSet",
