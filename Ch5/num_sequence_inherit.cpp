@@ -32,10 +32,13 @@ protected:
 			cerr << "Invalid position: " << pos << endl;
 			return false;
 		}
-		if (pos > size)
-			// gen_elems() is invoked through virtual mechanism 
+		else if (pos > size)
+		{
+			// gen_elem_to_pos is invoked through virual mechanism,
+			// because it is a pure virtual function in base class.
 			gen_elem_to_pos(pos);
-		return true;
+			return true;
+		}
 	}
 
 	const static int _max_pos = 50;
@@ -52,6 +55,7 @@ public:
 	//}
 
 	unsigned long int elem(int pos) {
+		check_integrity(pos, _elems_vec.size());
 		if (pos > _elems_vec.size())
 			Fibonacci::gen_elem_to_pos(pos);
 		return _elems_vec[pos - 1];
@@ -83,9 +87,7 @@ private:
 	static vector<unsigned long int> _elems_vec;
 
 	bool gen_elem_to_pos(unsigned long int pos) {
-		if (!check_integrity(pos))
-			return false;
-		else if (pos <= _elems_vec.size())
+		if (pos <= _elems_vec.size())
 		{
 			cout << "Warning: no need to generate sequence to position "
 				<< pos << endl;
@@ -135,7 +137,7 @@ void test_memfunc_elem(void) {
 }
 int main(void)
 {
-	//test_constructor_and_cout();
+	test_constructor_and_cout();
 	//test_new_and_delete();
 	//test_memfunc_elem();
 

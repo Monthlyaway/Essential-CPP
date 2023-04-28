@@ -18,6 +18,23 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ch5\Num-Sequence\Header\fibonacci.h" />
+    <ClInclude Include="Ch5\Num-Sequence\Header\lucas.h" />
+    <ClInclude Include="Ch5\Num-Sequence\Header\num_sequence.h" />
+    <ClInclude Include="Ch5\Num-Sequence\Header\pell.h" />
+    <ClInclude Include="Ch5\Num-Sequence\Header\pentagonal.h" />
+    <ClInclude Include="Ch5\Num-Sequence\Header\square.h" />
+    <ClInclude Include="Ch5\Num-Sequence\Header\triangular.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_fibonacci.cpp" />
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_lucas.cpp" />
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_pell.cpp" />
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_pentagonal.cpp" />
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_square.cpp" />
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_triangular.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,10 +143,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Ch5\num_sequence_inherit.cpp" />
-    <ClCompile Include="Source.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

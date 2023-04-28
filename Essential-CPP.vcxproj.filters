@@ -15,10 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClInclude Include="Ch5\Num-Sequence\Header\num_sequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ch5\Num-Sequence\Header\triangular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ch5\Num-Sequence\Header\fibonacci.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ch5\Num-Sequence\Header\pell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ch5\Num-Sequence\Header\square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ch5\Num-Sequence\Header\lucas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ch5\Num-Sequence\Header\pentagonal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_triangular.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ch5\num_sequence_inherit.cpp">
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_fibonacci.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_pell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_square.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_lucas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ch5\Num-Sequence\Test\test_pentagonal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
