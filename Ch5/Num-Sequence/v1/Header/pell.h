@@ -1,17 +1,17 @@
 #pragma once
 #include "num_sequence.h"
 
-class Lucas : public num_sequence {
+class Pell : public num_sequence {
 public:
-	Lucas(size_t beg_pos = 1, size_t len = 1) : _beg_pos(beg_pos), _len(len) {
+	Pell(size_t beg_pos = 1, size_t len = 1) : _beg_pos(beg_pos), _len(len) {
 		if (_beg_pos < 1 || len < 1) {
-			cerr << "Lucas constructor: invalid arguement, set to 1" << endl;
+			cerr << "Pell constructor: invalid arguement, set to 1" << endl;
 			_beg_pos = _len = 1;
 		}
 		if (_elems_vec.size() == 0)
 			_elems_vec.push_back(1);
 		if (_elems_vec.size() == 1)
-			_elems_vec.push_back(3);
+			_elems_vec.push_back(2);
 		if (_beg_pos + len - 1 > _elems_vec.size())
 			gen_elem_to_pos(_beg_pos + len - 1);
 	}
@@ -19,7 +19,7 @@ public:
 	unsigned long int elem(int pos) {
 		if (!check_integrity(pos, _elems_vec.size()))
 		{
-			cerr << "Lucas::elem() Invalid argument" << endl;
+			cerr << "Pell::elem() Invalid argument" << endl;
 			return -999;
 		}
 		return _elems_vec[pos - 1];
@@ -33,14 +33,14 @@ public:
 	unsigned long int beg_pos(void) const {
 		return _beg_pos;
 	}
-	ostream& display(ostream& os = cout) const {
+	ostream& print(ostream& os = cout) const {
 		os << what_am_i() << " (" << _beg_pos << ", " << _len << ") ";
-		for (int ix = _beg_pos - 1; ix < _beg_pos + _len - 2; ix++)
+		for (int ix = _beg_pos - 1; ix <= _beg_pos + _len - 2; ix++)
 			os << _elems_vec[ix] << " ";
 		return os;
 	}
 	string what_am_i(void) const {
-		return "Lucas";
+		return "Pell";
 	}
 
 protected:
@@ -53,11 +53,11 @@ private:
 	bool gen_elem_to_pos(size_t pos) {
 		for (int ix = _elems_vec.size(), new_val = 0; ix < pos; ix++)
 		{
-			new_val = _elems_vec[ix - 2] + _elems_vec[ix - 1];
+			new_val = _elems_vec[ix - 2] + 2 * _elems_vec[ix - 1];
 			_elems_vec.push_back(new_val);
 		}
 		return true;
 	}
 };
 
-vector<unsigned long int> Lucas::_elems_vec;
+vector<unsigned long int> Pell::_elems_vec;

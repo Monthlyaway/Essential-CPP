@@ -21,11 +21,11 @@ static void test_memfunc_elem(void) {
 	cout << fb << endl;
 	cout << "Elem at position 5: " << fb.elem(5) << endl;
 }
-int main(void)
-{
-	test_constructor_and_cout();
-	//test_new_and_delete();
-	//test_memfunc_elem();
-
-	return 0;
-}
+//int main(void)
+//{
+//	test_constructor_and_cout();
+//	//test_new_and_delete();
+//	//test_memfunc_elem();
+//
+//	return 0;
+//}

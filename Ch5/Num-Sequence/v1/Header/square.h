@@ -29,9 +29,9 @@ public:
 	unsigned long int beg_pos(void) const {
 		return _beg_pos;
 	}
-	ostream& display(ostream& os = cout) const {
+	ostream& print(ostream& os = cout) const {
 		os << what_am_i() << " (" << _beg_pos << ", " << _len << ") ";
-		for (int ix = _beg_pos - 1; ix < _beg_pos + _len - 2; ix++)
+		for (int ix = _beg_pos - 1; ix <= _beg_pos + _len - 2; ix++)
 			os << _elems_vec[ix] << " ";
 		return os;
 	}

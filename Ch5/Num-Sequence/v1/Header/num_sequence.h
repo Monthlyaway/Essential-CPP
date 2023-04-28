@@ -15,11 +15,11 @@ public:
 	virtual unsigned long int beg_pos(void) const = 0;
 	virtual unsigned long int back(void) const = 0;
 	virtual unsigned long int size(void) const = 0;
-	virtual ostream& display(ostream& os = cout) const = 0;
+	virtual ostream& print(ostream& os = cout) const = 0;
 	virtual string what_am_i(void) const = 0;
 
 	friend ostream& operator<<(ostream& os, const num_sequence& ns) {
-		return ns.display(os);
+		return ns.print(os);
 	}
 protected:
 	virtual bool gen_elem_to_pos(size_t pos) = 0;

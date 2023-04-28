@@ -5,7 +5,7 @@ class Fibonacci : public num_sequence {
 public:
 	Fibonacci(unsigned long int beg_pos = 1, unsigned long  int len = 1) :
 		_len(len), _beg_pos(beg_pos) {
-		gen_elem_to_pos(_beg_pos + len - 1);
+		check_integrity(_beg_pos + _len - 1, _elems_vec.size());
 	}
 	//~Fibonacci() { 
 	//	cout << "Fibonacci::~Fibonacci() destructor!" << endl; 
@@ -26,7 +26,7 @@ public:
 	unsigned long int beg_pos(void) const {
 		return _beg_pos;
 	}
-	ostream& display(ostream& os = cout) const {
+	ostream& print(ostream& os = cout) const {
 		os << what_am_i() << ": (" << _beg_pos << ", " << _len << ") ";
 		for (unsigned long int ix = _beg_pos - 1; ix <= _beg_pos + _len - 2; ix++)
 			os << _elems_vec[ix] << " ";
