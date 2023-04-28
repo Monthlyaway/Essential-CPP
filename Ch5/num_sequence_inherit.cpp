@@ -26,17 +26,7 @@ public:
 	}
 protected:
 	virtual bool gen_elem_to_pos(unsigned long int pos) = 0;
-	bool check_integrity(int pos) {
-		// check whether pos is negative or greater then _max_pos
-		if (pos <= 0 || pos > _max_pos)
-		{
-			cerr << "!! invalid position: " << pos
-				<< " Cannot honor request\n";
-			return false;
-		}
-		return true;
-
-	}
+	virtual bool check_integrity(int pos) const = 0;
 
 	const static int _max_pos = 50;
 };
@@ -53,7 +43,7 @@ public:
 
 	unsigned long int elem(int pos) {
 		if (pos > _elems_vec.size())
-			gen_elem_to_pos(pos);
+			Fibonacci::gen_elem_to_pos(pos);
 		return _elems_vec[pos - 1];
 	}
 	unsigned long int back(void) const {
@@ -74,6 +64,17 @@ public:
 	string what_am_i(void) const {
 		return "Fibonacci";
 	}
+
+protected:
+	bool check_integrity(int pos) const {
+		if (pos < 0 || pos > _max_pos)
+		{
+			cerr << "Invalid position: " << pos << endl;
+			return false;
+		}
+		return true;
+	}
+
 private:
 	unsigned long int _len;
 	unsigned long int _beg_pos;
@@ -134,7 +135,7 @@ int main(void)
 {
 	//test_constructor_and_cout();
 	//test_new_and_delete();
-	test_memfunc_elem();
+	//test_memfunc_elem();
 
 	return 0;
 }

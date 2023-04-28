@@ -37,7 +37,7 @@ In this code, the base class `Base` defines a virtual function `foo()`, but does
 
 When the `delete` statement is executed, the `Derived` destructor is called, but the `Base` destructor is not called. As a result, any resources allocated by the `Base` constructor are not properly released, which can lead to memory leaks and undefined behavior.
 
-To avoid this issue, it is a good practice to always define a virtual destructor in a base class that has virtual functions. This ensures that the destructor of the most derived class in the inheritance hierarchy is called, which in turn ensures that all resources allocated by the base class are properly released.
+**To avoid this issue, it is a good practice to always define a virtual destructor in a base class that has virtual functions.** This ensures that the destructor of the most derived class in the inheritance hierarchy is called, which in turn ensures that all resources allocated by the base class are properly released.
 
 Therefore, a base class that defines one or more virtual functions should always define a virtual destructor to avoid memory leaks and undefined behavior.
 
