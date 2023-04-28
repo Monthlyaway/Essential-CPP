@@ -26,7 +26,17 @@ public:
 	}
 protected:
 	virtual bool gen_elem_to_pos(unsigned long int pos) = 0;
-	virtual bool check_integrity(int pos) const = 0;
+	bool check_integrity(int pos, int size)
+	{
+		if (pos <= 0 || pos > _max_pos) {
+			cerr << "Invalid position: " << pos << endl;
+			return false;
+		}
+		if (pos > size)
+			// gen_elems() is invoked through virtual mechanism 
+			gen_elem_to_pos(pos);
+		return true;
+	}
 
 	const static int _max_pos = 50;
 };
@@ -66,21 +76,13 @@ public:
 	}
 
 protected:
-	bool check_integrity(int pos) const {
-		if (pos < 0 || pos > _max_pos)
-		{
-			cerr << "Invalid position: " << pos << endl;
-			return false;
-		}
-		return true;
-	}
 
 private:
 	unsigned long int _len;
 	unsigned long int _beg_pos;
 	static vector<unsigned long int> _elems_vec;
 
-	virtual bool gen_elem_to_pos(unsigned long int pos) {
+	bool gen_elem_to_pos(unsigned long int pos) {
 		if (!check_integrity(pos))
 			return false;
 		else if (pos <= _elems_vec.size())
