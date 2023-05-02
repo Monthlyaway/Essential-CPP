@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ch5\Num-Sequence\v2\Header\fibonacci.h">
+    <ClInclude Include="Ch5\Num-Sequence\v2\Header\num_sequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ch5\Num-Sequence\v2\Header\num_sequence.h">
+    <ClInclude Include="Ch5\Num-Sequence\v2\Header\fibonacci.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
