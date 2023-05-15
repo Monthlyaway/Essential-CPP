@@ -15,15 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ch5\Num-Sequence\v2\Header\num_sequence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ch5\Num-Sequence\v2\Header\fibonacci.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Ch5\Num-Sequence\v2\Test\test_fibonacci.cpp">
+    <ClCompile Include="Ch6\binarytree\btree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
