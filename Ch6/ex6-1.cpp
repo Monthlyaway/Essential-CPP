@@ -154,7 +154,7 @@ int main() {
     std::cout << "Values in the example: ";
     for (int i = 0; i < doubleExample.size(); ++i) {
         std::cout << doubleExample[i] << " ";
-    }
+    } 
     std::cout << std::endl;
 
     double searchValue2 = 3.4;
