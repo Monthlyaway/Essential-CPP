@@ -15,6 +15,7 @@ private:
 	ostream& _os;
 };
 
+
 void prog1()
 {
 	PrintIt to_standard_out(cout);
